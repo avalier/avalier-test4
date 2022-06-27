@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: avalier-test4
+  labels:
+    app: avalier-test4
+spec:
+  selector:
+    app: avalier-test4
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 5001

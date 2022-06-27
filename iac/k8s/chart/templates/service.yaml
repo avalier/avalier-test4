@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "avalier-test4.fullname" . }}
+  labels:
+    app: {{ include "avalier-test4.fullname" . }}
+    {{- include "avalier-test4.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 5001
+  selector:
+    {{- include "avalier-test4.selectorLabels" . | nindent 4 }}
